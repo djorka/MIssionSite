@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MissionSite.Models.Mission>
+
+@{
+    ViewBag.Title = "MissionPage";
+}
+
+<h2>MissionPage</h2>
+
+@foreach (var item in Model.Where(x => x.MisName == ViewBag.MisName))
+{
+        <p>@item.MisName</p>
+        <p>@item.MisPresidentName</p>
+        <p>@Html.Raw(item.MisAddress)</p>
+        <p>@item.MisLanguage</p>
+        <p>@item.MisClimate</p>
+        <p>@item.MisDominantReligion</p>
+        <img class="img-responsive" src=@Href(item.MisFlagUrl) />
+}
+
+

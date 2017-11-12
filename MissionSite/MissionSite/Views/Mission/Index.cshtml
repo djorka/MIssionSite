@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MissionSite.Models.Mission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Select a Mission</h2>
+
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        Select a Mission
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            <li>@Html.ActionLink(item.MisName, "MissionPage", "Mission", new { MisName = item.MisName}, new { @class = "btn" })</li>
+        }
+    </ul>
+</div>
+
+
