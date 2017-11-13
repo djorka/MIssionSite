@@ -8,67 +8,54 @@
     -subject(choose from a list)
     -message body-->
 
-
-
-
 <div class="container">
-    <h2>SpicyBoisse Incorporated.</h2>
+    <h2>Group 13</h2>
     <h4>(810) 123-4567</h4>
-    <h4>hr@spicyboisse.com </h4>
+    <h4>hr@group13.com </h4>
 </div>
 
 <br />
 
-@using (Html.BeginForm("Sign_in", "Home", FormMethod.Post))
+@using (Html.BeginForm("Email_Form", "Home", FormMethod.Post))
 {
     <div class="input-group">
         <label for="inputName" class="input-group-addon">Name</label>
-        @Html.TextBox("Name", null, new { @class = "form-control", @placeholder = "Put your name here!" })
+        @Html.TextBox("Name", null, new { @class = "form-control", @placeholder = "Full Name" })
     </div>
     <br />
     <div class="input-group">
         <label for="inputEmail" class="input-group-addon">Email</label>
-        @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Put your Email here!" } )
+        @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Email Address" } )
     </div>
     <br />
-    <!--
-    <div class="form-group">
-        <label for="inputSubject">Subject</label>
-        Html.DropDownList( , new {  = "Urgent Question" } )
-       //<!--"Urgent Question", "Thanks", "Mission-Specific Question", "Comment")
-    </div>
-    -->
-
-
     <div class="form-group">
         <label for="sel1">Subject (select one):</label>
         <select class="form-control" id="sel1">
+            <option>Select One</option>
             <option>Urgent Question</option>
             <option>Thanks!</option>
             <option>Mission-specific Question</option>
             <option>Comment</option>
         </select>
     </div>
-
-
     <br />
     <div class="input-group">
         <label for="inputMessage" class="input-group-addon">Message</label>
         @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Put your message here!" } )
     </div>
     <br />
-    <!--This button will use the information in the fields and pass it to the method "Sign_in" in the "Home" controller.
-        These will need to be changed for the acutal version-->
-    <button type="submit">Send Message</button>
-    <br />
-    <br />
     <!--This button will just reset the fields for now-->
-    @Html.ActionLink("Reset Message", null, new { @class = "btn btn-primary btn-lg" } )
-    <!--<button type="reset">Reset Message</button>-->
+    <p>@Html.ActionLink("Reset Message", null, new { @class = "btn btn-primary btn-lg", @type="reset" }) &nbsp;
+      @Html.ActionLink("Send Message", null, new { @class = "btn btn-primary btn-lg", @type="submit"})</p>
+    <p>
+        <input type="reset" class="btn btn-info" value="Reset Button">
+        &nbsp;
+        <input type="reset" class="btn btn-info" value="Submit Button">
+    </p>
 }
 
 
-
+<!--
 <div class="container">
     <h3>Send us a message!</h3>
 
@@ -108,23 +95,17 @@
 
         <div class="container">
             <input type="submit" class="btn btn-info" onclick="ClearFunction()" value="Submit Button">
-            <!--This needs to clear all the fields-->
-            <!--<input type="submit" class="btn btn-info" onclick="SubmitFunction()" value="Submit Button">-->
+            This needs to clear all the fields
+            <input type="submit" class="btn btn-info" onclick="SubmitFunction()" value="Submit Button">
         </div>
     </form>
-</div>
+</div> -->
 
-<script>
+<!--javascript function-->
+<!--
+    <script>
     function ClearFunction() {
         this.getElementByID("ContactInfo").reset();
     }
 </script>
-
-@using (Html.BeginForm("Sign_in", "Home", FormMethod.Post))
-{
-    <label for="inputEmail">Email address</label>
-    @Html.TextBox("Email address")
-    <label for="inputPassword">Password</label>
-    @Html.Password("Password")
-    <button type="submit">Sign in</button>
-}
+-->

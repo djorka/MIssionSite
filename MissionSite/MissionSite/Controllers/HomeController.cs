@@ -26,5 +26,11 @@ namespace MissionSite.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Email_Form(FormContext form)
+        {
+            return View();
+        }
     }
 }
