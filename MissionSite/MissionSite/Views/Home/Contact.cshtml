@@ -1,17 +1,68 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿<!--company info
+    phone number
+    email
+    
+    User:
+    name
+    email
+    -subject(choose from a list)
+    -message body-->
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="container">
+    <h2>SpicyBoisse Incorporated.</h2>
+    <h4>(810) 123-4567</h4>
+    <h4>hr@spicyboisse.com </h4>
+</div>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<br />
+
+<div class="container">
+    <h3>Send us a message!</h3>
+
+    <form id="ContactInfo">
+        <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <input id="NameField" type="text" class="form-control" name="NameField" placeholder="Put your name here!">
+        </div>
+
+        <br />
+
+        <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input id="EmailField" type="text" class="form-control" name="EmailField" placeholder="Put your email here!">
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label for="sel1">Subject (select one):</label>
+            <select class="form-control" id="sel1">
+                <option>Urgent Question</option>
+                <option>Thanks!</option>
+                <option>Mission-specific Question</option>
+                <option>Comment</option>
+            </select>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <label for="Message-body">Message:</label>
+            <textarea class="form-control" rows="10" id="Message-body"></textarea>
+        </div>
+
+        <br />
+
+        <div class="container">
+            <input type="submit" class="btn btn-info" onclick="ClearFunction()" value="Submit Button">
+            <!--This needs to clear all the fields-->
+            <!--<input type="submit" class="btn btn-info" onclick="SubmitFunction()" value="Submit Button">-->
+        </div>
+    </form>
+</div>
+
+<script>
+    function ClearFunction() {
+        this.getElementByID("ContactInfo").reset();
+    }
+</script>
