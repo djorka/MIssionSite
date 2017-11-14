@@ -1,60 +1,57 @@
-﻿<!--company info
-    phone number
-    email
-    
-    User:
-    name
-    email
-    -subject(choose from a list)
-    -message body-->
-
-<div class="container">
-    <h2>Group 13</h2>
-    <h4>(810) 123-4567</h4>
-    <h4>hr@group13.com </h4>
-</div>
-
-<br />
-
-@using (Html.BeginForm("Email_Form", "Home", FormMethod.Post))
-{
-    <div class="input-group">
-        <label for="inputName" class="input-group-addon">Name</label>
-        @Html.TextBox("Name", null, new { @class = "form-control", @placeholder = "Full Name" })
-    </div>
-    <br />
-    <div class="input-group">
-        <label for="inputEmail" class="input-group-addon">Email</label>
-        @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Email Address" } )
-    </div>
-    <br />
-    <div class="form-group">
-        <label for="sel1">Subject (select one):</label>
-        <select class="form-control" id="sel1">
-            <option>Select One</option>
-            <option>Urgent Question</option>
-            <option>Thanks!</option>
-            <option>Mission-specific Question</option>
-            <option>Comment</option>
-        </select>
-    </div>
-    <br />
-    <div class="input-group">
-        <label for="inputMessage" class="input-group-addon">Message</label>
-        @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Put your message here!" } )
-    </div>
-    <br />
-    <!--This button will just reset the fields for now-->
-    <p>@Html.ActionLink("Reset Message", null, new { @class = "btn btn-primary btn-lg", @type="reset" }) &nbsp;
-      @Html.ActionLink("Send Message", null, new { @class = "btn btn-primary btn-lg", @type="submit"})</p>
-    <p>
-        <input type="reset" class="btn btn-info" value="Reset Button">
-        &nbsp;
-        <input type="reset" class="btn btn-info" value="Submit Button">
-    </p>
+﻿@{
+    ViewBag.Title = "Contact Us";
 }
+<div class="container">
+    <div class="container text-center">
+        <h2>@ViewBag.Title</h2>
+        <h3>Group 13</h3>
+        <h4>(810) 123-4567</h4>
+        <h4>hr@group13.com </h4>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm("Email_Form", "Home", FormMethod.Post))
+            {
+                <div class="input-group">
+                    <label for="inputName" class="input-group-addon">Name</label>
+                    @Html.TextBox("Name", null, new { @class = "form-control", @placeholder = "Full Name" })
+                </div>
+                <br />
+                <div class="input-group">
+                    <label for="inputEmail" class="input-group-addon">Email</label>
+                    @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Email Address" })
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="sel1">Subject (select one):</label>
+                    <select class="form-control" id="sel1">
+                        <option>Select One</option>
+                        <option>Urgent Question</option>
+                        <option>Thanks!</option>
+                        <option>Mission-specific Question</option>
+                        <option>Comment</option>
+                    </select>
+                </div>
+                <br />
+                <div class="input-group">
+                    <label for="inputMessage" class="input-group-addon">Message</label>
+                    @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Put your message here!" })
+                </div>
+                <br />
+                <p>
+                    <input type="reset" class="btn btn-info" value="Reset Button">
+                    &nbsp;
+                    <input type="reset" class="btn btn-info" value="Submit Button">
+                </p>
+            }
+        </div>
+        <div class="col-md-7 col-md-offset-1">
+            <img src="~/Content/Images/missionaries.png" />
+        </div>
+    </div>
 
-
+</div>
 <!--
 <div class="container">
     <h3>Send us a message!</h3>

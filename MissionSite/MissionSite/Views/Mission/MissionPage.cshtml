@@ -4,17 +4,109 @@
     ViewBag.Title = "MissionPage";
 }
 
-<h2>MissionPage</h2>
-
 @foreach (var item in Model.Where(x => x.MisName == ViewBag.MisName))
 {
-        <p>@item.MisName</p>
-        <p>@item.MisPresidentName</p>
-        <p>@Html.Raw(item.MisAddress)</p>
-        <p>@item.MisLanguage</p>
-        <p>@item.MisClimate</p>
-        <p>@item.MisDominantReligion</p>
-        <img class="img-responsive" src=@Href(item.MisFlagUrl) />
+    <ul class="breadcrumb">
+        <li>@Html.ActionLink("Select Mission", "Index", "Mission")</li>
+        <li>@item.MisName</li>
+    </ul>
+    <div class="jumbotron text-center">
+        <img src=@Href(item.MisFlagUrl) />
+        <h1>@item.MisName</h1>
+    </div>
+    <div class="container">
+        <div class="col-md-3 text-center">
+            <h3><b>Mission President</b></h3>
+            <p class="lead">@item.MisPresidentName</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <h3><b>Mission Address</b></h3>
+            <p class="lead" style="font-size: medium">@Html.Raw(item.MisAddress)</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <h3><b>Mission Language</b></h3>
+            <p class="lead">@item.MisLanguage</p>
+        </div>
+        <div class="col-md-3 text-center">
+            <h3><b>Dominant Religion</b></h3>
+            <p class="lead">@item.MisDominantReligion</p>
+        </div>
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <h3><b>Mission Climate</b></h3>
+            <p class="lead">@item.MisClimate</p>
+        </div>
+    </div>
 }
+<hr />
+
+<div class="container text-center">
+    <h1><u>FAQ</u></h1>
+    <div class="col-md-6">
+        <h4 class="lead">Q. How long is the mission?</h4>
+        <p>24 months for males, 18 months for females</p>
+        <div id="replyDiv" style="display: none">
+            @using (Html.BeginForm("Reply_Form", "Mission", FormMethod.Post))
+            {
+                <div class="input-group" style="margin: 0px auto; width: 400px">
+                    @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Ask Question here" })
+                </div>
+                <br />
+                <input type="reset" class="btn btn-info" onclick="myFunction()" value="Submit Reply">
+            }
+        </div>
+        <br />
+        <button class="btn btn-primary" onclick="myFunction()">Reply</button>
+    </div>
+    <div class="col-md-6">
+        <h4 class="lead">Q. How old do I have to be to serve?</h4>
+        <p>18 years old for males, 19 years old for females</p>
+        <div id="replyDiv2" style="display: none">
+            @using (Html.BeginForm("Reply_Form", "Mission", FormMethod.Post))
+            {
+                <div class="input-group" style="margin: 0px auto; width: 400px">
+                    @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Put your reply here!" })
+                </div>
+                <br />
+                <input type="reset" class="btn btn-info" onclick="myFunction2()" value="Submit Reply">
+            }
+        </div>
+        <br />
+        <button class="btn btn-primary" onclick="myFunction2()">Reply</button>
+    </div>
+</div>
+<hr />
+
+<div class="container text-center">
+    <h1><u>Submit a Question</u></h1>
+    @using (Html.BeginForm("Submit_Question", "Mission", FormMethod.Post))
+    {
+        <div class="input-group" style="margin: 0px auto; width: 800px">
+            @Html.TextArea("inputMessage", null, new { @class = "form-control", @rows = "10", @placeholder = "Ask away!" })
+        </div>
+        <br />
+        <button class="btn btn-primary btn-lg btn-primary" type="reset">Submit a Question</button>
+    }
+</div>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("replyDiv");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+        else {
+            x.style.display = "none";
+        }
+    }
+    function myFunction2() {
+        var x = document.getElementById("replyDiv2");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        }
+        else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 
